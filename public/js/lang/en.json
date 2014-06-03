@@ -1,0 +1,18 @@
+{ "home_top_email" : "Email me",
+"home_top_about": "About me",
+"home_welcome_slogan_1" : "Welcome to my personal website!",
+"home_welcome_slogan_2" : "The backend developer who doesn\"t want to be a good frontend developer can\"t be a good designer",
+"my_work_artical_title_2":"My first job in Technology was....",
+"my_work_artical_title_3":"Life in Shanghai, Attempt of Make the Dream come true" ,
+"my_work_artical_title_5":"Back to London, From dream to dream"    ,
+"book_title":"The books I read, I like, I recommend",
+"book_author" :"Author" ,
+"book_category" :"Category",
+"book_language" :"Language",
+"book_language_en" :"English",
+"book_language_cn" :"Chinese",
+"book_download" :"Download"
+
+}
+
+

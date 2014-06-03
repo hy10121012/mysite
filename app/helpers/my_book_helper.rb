@@ -1,0 +1,2 @@
+module MyBookHelper
+end

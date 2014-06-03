@@ -1,0 +1,28 @@
+<div class="blog_container" bg-controller="TagCtrl">
+  <section id="body_header" bg-img="/images/tag/<%=@tag.img %>" class="tag_header">
+    <div class="header_blinder">
+        <div class="tag_header_space"></div>
+        <div class="blog_title_box">
+          <h1 class="tag_title"><%= @tag.name %></h1>
+        </div>
+    </div>
+  </section>
+  <div class="gap_space">
+  </div>
+  <div class="display_area">
+    <% @tag.blogs.each do |blog| %>
+    <section class="article_block">
+      <h2><a href="/blogs/<%=blog.id %>"><%=blog.title%></a></h2>
+      <article class="article_content" ><%=raw blog.content%></article>
+    </section>
+    <% end %>
+  </div>
+</div>
+<%= render partial: "shared/footer" %>
+
+
+
+
+
+
+

@@ -1,0 +1,18 @@
+<div ng-controller="BookCtrl" class="container_reading ">
+  <div class="book_header">
+    <div class="header_cover">
+      <div class="book_header_text">
+        {{lang.book_title}}
+      </div>
+    </div>
+  </div>
+  <div class="book_list book_list_center">
+    <div ng-repeat="book in books"  class="book_item">
+      <div ng-if="book.img_url==null" bg-img-fixed="/images/book/default.jpg" open-book="{{book.name}}" id="book-{{book.id}}" class="book_item_img">
+      </div>
+      <div ng-if="book.img_url!==null" bg-img-fixed="/images/book/{{book.img_url}}" open-book="{{book.name}}" id="book-{{book.id}}"  class="book_item_img">
+      </div>
+
+    </div>
+  </div>
+</div>

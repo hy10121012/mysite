@@ -1,0 +1,25 @@
+
+<div class="gap_space">
+</div>
+<div class="blog_container">
+  <%= form_for :blog ,url: blogs_path do |blog| %>
+
+      <div>
+        <%= blog.label :名称  %>
+      </div>
+      <div>
+        <%= blog.text_field :title %>
+      </div>
+      <div>
+        <%= blog.text_area :content %>
+      </div>
+      <div>
+        <%= blog.text_field :tag1, :name=>'tags[]' %>
+        <%= blog.text_field :tag2, :name=>'tags[]'%>
+        <%= blog.text_field :tag3, :name=>'tags[]' %>
+      </div>
+      <div>
+        <%= blog.submit  %>
+      </div>
+  <% end %>
+</div>

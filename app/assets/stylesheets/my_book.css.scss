@@ -1,0 +1,69 @@
+// Place all the styles related to the myBook controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.container_reading{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+
+}
+
+.reading_bg{
+  background: url("/images/book/bg.jpg")    no-repeat;
+  background-size: 100% auto;
+}
+.book_list_center{
+  min-width: 1000px;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+}
+.book_list{
+  margin-top: 100px;
+}
+
+.book_item{
+  float: right;
+  width: 200px;
+  margin: 50px 150px 50px 150px;
+}
+
+
+.book_item_img{
+  width: 300px;
+  height: 400px;
+}
+
+.book_item_name{
+  padding: 5px;
+  text-align: center;
+}
+
+
+.book_header{
+  position: relative;
+  display: block;
+  width: 100%;
+  height:300px;
+  background-color: #000000;
+  color: #FFFFFF;
+
+}
+
+
+.header_cover{
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255,255,255,0.1);
+}
+
+
+.book_header_text{
+  padding-top:130px;
+  font-weight: 100;
+  font-size: 3em;
+  width: 100%;
+  text-align: center;
+
+}

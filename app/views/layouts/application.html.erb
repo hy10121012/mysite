@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html ng-app="mysite">
+<head>
+  <title>Myside</title>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "thirdparty/jquery-ui.min",  "data-turbolinks-track" => true %>
+  <%= javascript_include_tag params[:controller], "data-turbolinks-track" => true %>
+  <%= stylesheet_link_tag    params[:controller], media: "all", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<header class="top_header">
+  <nav class="top_header_box">
+    <ul ng-controller='TopbarCtrl' class="top_header_item">
+      <a href="javascript:void(null);"><li>
+        {{lang.home_top_email}}
+      </li> </a>
+      <a href="/about"><li>  {{lang.home_top_about}}</li> </a>
+      <li ng-repeat='language in languages' ng-click="changeLanguage(language.id)"  class="lan_tag" style="float: right">
+        <img ng-src="/images/lang/{{language.url}}.png" alt="lang"  style="width: 35px;height: 35px;" class="circular" title="language">
+      </li>
+      <li id="side_menu" class="lan_tag"><img style="width: 35px;height: 35px;" class="circular" src="/images/topbar.JPG" alt="lan" title="language" /> </li>
+    </ul>
+    <div class="clear"></div>
+  </nav>
+</header>
+<div class="wrap">
+    <div id="side_bar">
+        <a href="/home"><div class="side_bar_item">Home</div></a>
+        <a href="/my_work"><div class="side_bar_item">My Works</div></a>
+        <a href="/my_blog"> <div class="side_bar_item">My Blogs</div> </a>
+      <!--<a href="/my_games"> <div class="side_bar_item">My Games</div></a>-->
+      <!--<a href="/my_interest"> <div class="side_bar_item">My Interests</div></a>-->
+        <a href="/my_book"> <div class="side_bar_item">My Books</div></a>
+        <a href="/gallery">  <div class="side_bar_item">My life</div></a>
+    </div>
+    <div id="html_container" class="html_container"><%= yield %></div>
+    <div class="clear"></div>
+</div>
+</body>
+</html>

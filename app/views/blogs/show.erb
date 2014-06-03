@@ -1,0 +1,48 @@
+<%= javascript_include_tag "blog_show", "data-turbolinks-track" => true %>
+<div class="alticle_container" ng-controller="ArticleCtrl" ng-init="get_comment( <%=@article.id  %>)">
+  <div ng-click="return()" class="back_button"><img src="/icon/right_arrow_w.gif" /></div></a>
+  <section id="body_header"  bg-img="/images/blogs/<%=@article.img %>" class="article_header">
+  <div class="header_blinder">
+    <div class="article_header_space"></div>
+    <div class="blog_title_box">
+      <h1><%=@article.title %></h1>
+    </div>
+  </div>
+  </section>
+  <div class="gap_space">
+  </div>
+  <div class="display_area">
+    <section  class="article_body">
+      <article class="article_content">
+        <%= raw @article.content %>
+      </article>
+      <nav class="article_tag_area">
+        <% @article.tags.each do | tag| %>
+        <span class="article_tag"><a href="/tags/<%=tag.id %>"><%=tag.name%></a></span>
+        <% end %>
+      <div class="clear"></div>
+      </nav>
+    </section>
+    <div class="gap_space"><span class="comment_title">评论</span> </div>
+    <section class="comment_area"  ng-repeat="comment in comments track by $index" >
+      <article ng-if="$index==comments.length-1" style="border-bottom: 0px solid" class="comment_item">
+        <div style="font-weight: bold" >{{comment.name}}</div>
+        <span>{{comment.content}}</span>
+        <div >{{comment.created_at}}</div>
+      </article>
+      <article ng-if="$index!=comments.length-1" class="comment_item">
+        <div style="font-weight: bold" >{{comment.name}}</div>
+        <span>{{comment.content}}</span>
+        <div >{{comment.created_at}}</div>
+      </article>
+    </section>
+    <div class="comment_input">
+      <input  id="name_input" name="name" ng-model="name" type="text" ng-init="name='过客'" >
+      <input  id="comment_input" placeholder="Put your comment" ng-model="comment" type="text" >
+      <span style="float:right"><a id="comment_button" class="button" href="#" ng-click="sendComment(<%=@article.id %>,comment,name)" >添加评论</a></span>
+      <div class="clear"></div>
+    </div>
+
+  </div>
+</div>
+<%= render partial: "shared/footer" %>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source source="LOCAL" name="Data Source" product="" version="" jdbc-version="" driver-name="" driver-version="" uuid="3da8a7a9-3782-4de5-85a9-8a54bc5c5c60">
+    <synchronize>true</synchronize>
+    <jdbc-driver>sun.jdbc.odbc.JdbcOdbcDriver</jdbc-driver>
+    <jdbc-url>jdbc://127.0.0.1:3306</jdbc-url>
+    <user-name>root</user-name>
+    <user-password>df9bdf9adf9bdf98df9bdf9adf9bdf98</user-password>
+    <default-dialect>MySQL</default-dialect>
+    <libraries/>
+  </data-source>
+</component>
