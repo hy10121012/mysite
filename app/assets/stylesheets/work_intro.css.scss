@@ -5,9 +5,10 @@
 .work_body {
   position: relative;
   display: block;
-  min-width:1100px;
+  min-width:950px;
   height: 100%;
   color: #000000;
+  padding:10px;
 }
 
 .html_container {
@@ -47,6 +48,7 @@ h2{
 .article_content{
   font-size: 1.5em;
   font-weight: 100;
+  font-family: "TitilliumText22L-Regular",'微软雅黑';
 }
 
 #work_page_1{
@@ -58,10 +60,9 @@ h2{
 }
 
 #work_page_2{
-  min-width:1100px;
   max-width:1200px;
   width:90%;
-  height:1500px;
+  height:1950px;
   margin-right: auto;
   margin-left: auto;
 }
@@ -83,12 +84,12 @@ h2{
 }
 
 #work_page_4{
-  min-width:1100px;
-  max-width:1200px;
-  width:90%;
-  height:800px;
+  height:2300px;
   margin-right: auto;
   margin-left: auto;
+  width: 90%;
+  max-width:1200px;
+
 }
 
 #work_page_5{
@@ -108,10 +109,9 @@ h2{
 }
 
 #work_page_6{
-  min-width:1100px;
   max-width:1200px;
   width:90%;
-  height:800px;
+  height:1400px;
   margin-right: auto;
   margin-left: auto;
 }

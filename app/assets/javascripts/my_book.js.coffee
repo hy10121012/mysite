@@ -25,7 +25,7 @@ mysite.directive('openBook', ($rootScope) ->
         $.get( '/my_book/find_book/'+attrs.openBook,(data) ->
           img = '/images/book/default.jpg';
           if data.img_url !=null
-            img ='/images/book/'+data.img_url;
+            img =data.img_url;
           lang = "Unknown"
           if data.language==1
             lang = $rootScope.lang.book_language_cn
@@ -56,11 +56,11 @@ mysite.directive('openBook', ($rootScope) ->
           container +=  data.description
           container +=  "</div>"
           container +=  "<div class='center_container_bottom_nav'>"
-          container +=   '<div class="center_container_bottom_nav_download">'+$rootScope.lang.book_download+'</div>'
+          container +=   '<a target="_blank" href="'+data.file_url+'"><div id="center_container_bottom_nav_download" class="center_container_bottom_nav_download">'+$rootScope.lang.book_download+'</div></a>'
           container +=  "</div>"
           container +="</div>";
 
-          html = "<div style='display: none' class='blink' id='blink'>"+container+"</div>";
+          html = "<div class='blink' id='blink'>"+container+"</div>";
           $('body').prepend(html)
           top_margin = Math.floor(window.innerHeight- $('#center_container').height())/2;
           left_margin = Math.floor(window.innerWidth- $('#center_container').width())/2;
@@ -71,10 +71,8 @@ mysite.directive('openBook', ($rootScope) ->
           $('#center_container').css('margin-top',top_margin+'px');
           $('#center_container').css('left',left_margin+'px');
           $('.blink').fadeIn();
-          $('#center_container_closer').on('click',->
-            $('#blink').fadeOut(->
-              $('#blink').remove();
-            );
+          $('#center_container_bottom_nav_download').bind('click touchend',(e)->
+            e.stopPropagation()
           )
         )
       )

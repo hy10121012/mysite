@@ -1,0 +1,12 @@
+<% @photos.each do |photo| %>
+    <div class=" photo_item photo_item_style_2">
+      <div open-pic='<%=photo.photo(:large)  %>' id="<%=photo.id %>" class="append_<%=@offset %> photo_item_cover"></div>
+      <div class="photo_item_img"><img src='<%=photo.photo(:medium)  %>' /></div>
+      <% if photo.description.nil? %>
+      <% else %>
+          <div class="photo_item_des">
+            <%= photo.description %>
+          </div>
+      <% end %>
+    </div>
+<% end %>

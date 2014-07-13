@@ -11,7 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140526225314) do
+ActiveRecord::Schema.define(version: 20140710103354) do
+
+  create_table "albums", force: true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "blog_tags", force: true do |t|
     t.integer  "tag_id"
@@ -30,13 +37,20 @@ ActiveRecord::Schema.define(version: 20140526225314) do
 
   create_table "books", force: true do |t|
     t.string   "name"
-    t.string   "author",      limit: 128, null: false
-    t.string   "category",    limit: 128, null: false
-    t.integer  "language",    limit: 1,   null: false
+    t.string   "author",             limit: 128, null: false
+    t.string   "category",           limit: 128, null: false
+    t.integer  "language",           limit: 1,   null: false
     t.string   "description"
-    t.string   "img_url"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "cover_file_name"
+    t.string   "cover_content_type"
+    t.integer  "cover_file_size"
+    t.datetime "cover_updated_at"
+    t.string   "file_file_name"
+    t.string   "file_content_type"
+    t.integer  "file_file_size"
+    t.datetime "file_updated_at"
   end
 
   create_table "comments", force: true do |t|
@@ -47,12 +61,15 @@ ActiveRecord::Schema.define(version: 20140526225314) do
     t.datetime "updated_at"
   end
 
-  create_table "galleries", force: true do |t|
-    t.string   "title"
-    t.string   "url"
+  create_table "photos", force: true do |t|
     t.string   "description"
+    t.integer  "album_id",           null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
   end
 
   create_table "tags", force: true do |t|
@@ -60,6 +77,15 @@ ActiveRecord::Schema.define(version: 20140526225314) do
     t.string   "img",        limit: 64
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "uploads", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "uploaded_file_file_name"
+    t.string   "uploaded_file_content_type"
+    t.integer  "uploaded_file_file_size"
+    t.datetime "uploaded_file_updated_at"
   end
 
 end

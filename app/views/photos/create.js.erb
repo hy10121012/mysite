@@ -1,0 +1,7 @@
+<% if @photo.new_record? %>
+  alert('Failed');
+<% else %>
+  if ($('#new_uploaded_img') !== undefined) {
+    $('#new_uploaded_img').append("<%=j render partial: 'photos/upload', locals: { photo: @photo } %>");
+  }
+<% end %>

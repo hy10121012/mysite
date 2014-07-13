@@ -3,4 +3,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-Myside::Application.load_tasks
+Mysite::Application.load_tasks

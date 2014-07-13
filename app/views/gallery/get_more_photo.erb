@@ -1,0 +1,5 @@
+<% if @photos.length<=0 %>
+   0
+<% else %>
+     <%= render partial: 'photo_cell', locals: { photos: @photos,offset:@offset } %>");
+<% end %>

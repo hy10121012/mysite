@@ -33,7 +33,7 @@ class BlogsController < ApplicationController
   end
 
   def add_comment
-    if !params[:comment].nil? & !params[:name].nil?
+    if !params[:comment].length>0 & !params[:name].length>0
       comment = Comment.new;
       comment.content=params[:comment]
       comment.name=params[:name]
@@ -60,14 +60,16 @@ class BlogsController < ApplicationController
 
     if !tags.nil?
       tags.each_with_index do  |tag,index|
-        got_tag = Tag.find_by_name(tag);
-        if got_tag.nil?
-          got_tag = Tag.new
-          got_tag.name = tag;
-          got_tag.created_at = Time.now.strftime(DATETIME_FORMAT);
-          got_tag.save;
+        if  tag.length > 0
+          got_tag = Tag.find_by_name(tag);
+          if got_tag.nil?
+            got_tag = Tag.new
+            got_tag.name = tag;
+            got_tag.created_at = Time.now.strftime(DATETIME_FORMAT);
+            got_tag.save;
+          end
+          tag_array[index] = got_tag
         end
-        tag_array[index] = got_tag
       end
     end
 
@@ -79,7 +81,7 @@ class BlogsController < ApplicationController
     blog.created_at = Time.now.strftime(DATETIME_FORMAT);
     blog.updated_at = Time.now.strftime(DATETIME_FORMAT);
     blog.save;
-    #redirect_to("/my_blog")
+    redirect_to("/my_blog")
   end
 
 end

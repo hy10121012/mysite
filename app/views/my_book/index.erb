@@ -1,8 +1,10 @@
 <div ng-controller="BookCtrl" class="container_reading ">
   <div class="book_header">
     <div class="header_cover">
+      <div style="position: absolute;width: 100%;height: 100%;background-color: rgba(0,0,0,0.6);">
       <div class="book_header_text">
         {{lang.book_title}}
+      </div>
       </div>
     </div>
   </div>
@@ -10,9 +12,10 @@
     <div ng-repeat="book in books"  class="book_item">
       <div ng-if="book.img_url==null" bg-img-fixed="/images/book/default.jpg" open-book="{{book.name}}" id="book-{{book.id}}" class="book_item_img">
       </div>
-      <div ng-if="book.img_url!==null" bg-img-fixed="/images/book/{{book.img_url}}" open-book="{{book.name}}" id="book-{{book.id}}"  class="book_item_img">
+      <div ng-if="book.img_url!==null" bg-img-fixed="{{book.img_url}}" open-book="{{book.name}}" id="book-{{book.id}}"  class="book_item_img">
       </div>
-
     </div>
   </div>
+  <div class="clear"></div>
+  <%= render partial: "shared/footer" %>
 </div>

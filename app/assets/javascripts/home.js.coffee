@@ -23,30 +23,37 @@ $j ->
     correctSize('home_top_1')
     correctSize('menu_area')
 
-
-  $('#html_container').scroll(->
-    element = $('#html_container');
-    if(navigator.userAgent.indexOf("Mobile")> -1)
-      if  (navigator.userAgent.indexOf("Chrome")> -1)
-        if document.body.scrollTop >=$(window).height()
-          showMenu($('#menu_list'))
-      else if (navigator.userAgent.indexOf("Safari") >-1)
-        if document.body.scrollTop >= $('body').height()* 0.8
-          showMenu($('#menu_list'))
-    else
-      if element.scrollTop()==element.height()
-        showMenu($('#menu_list'))
-  )
+#  showMenu($('#menu_list'))
+#  $('#html_container').scroll(->
+#    element = $('#html_container');
+#    if(navigator.userAgent.indexOf("Mobile")> -1)
+#      if  (navigator.userAgent.indexOf("Chrome")> -1)
+#        if document.body.scrollTop >=$(window).height()
+#          showMenu($('#menu_list'))
+#      else if (navigator.userAgent.indexOf("Safari") >-1)
+#        if document.body.scrollTop >= $('body').height()
+#          showMenu($('#menu_list'))
+#    else
+#      if element.scrollTop()==element.height()
+#        showMenu($('#menu_list'))
+#  )
 
 
   $('#home_down_arrow').click ->
-    $('.html_container').animate {scrollTop: $(document).height() },3000
+    $('.html_container').animate {scrollTop: $(document).height() },1000
 
   $(".menu_list_item_cover").click ->
     e = $(this)
-    $('body'). hide "drop",2000, ->
-      $url = $(e).parent().attr "id"
-      window.location.href = $url;
+    $url = $(e).parent().attr "id"
+    window.location.href = $url;
+
+  $('.menu_list_item_cover').mouseenter(()->
+    $('#'+$(this).attr('oid')+'_').animate({backgroundColor: 'background-color:rgba(255,255,255,0.1);',},200);
+  ).mouseout(()->
+    $('#'+$(this).attr('oid')+'_').animate({backgroundColor: 'background-color:rgba(255,255,255,0.0)',},200);
+  )
+
+
 
 showMenu=(e) ->
   if(e.css("display")=="none")
@@ -67,3 +74,6 @@ showMenu=(e) ->
 
 mysite.controller 'HomeCtrl',($scope) ->
   $scope.lan = lang
+mysite.controller 'OptionCtrl',($scope) ->
+  $scope.lan = lang
+

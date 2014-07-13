@@ -1,0 +1,39 @@
+<div class="container_reading ">
+  <div class="book_header">
+    <div class="header_cover">
+      <div style="position: absolute;width: 100%;height: 100%;background-color: rgba(0,0,0,0.6);">
+        <div class="book_header_text">
+          {{lang.book_title}}
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="book_list book_list_center">
+    <%= form_for(@book, html: { multipart: true }) do |f| %>
+        <%= f.label(:name_label, "name") %>
+        <%= f.text_field(:name, :size  => "100") %>
+        <br />
+        <%= f.label(:author_label, "author") %>
+        <%= f.text_field(:author, :size  => "100") %>
+        <br />
+        <%= f.label(:language_label, "language") %>
+        <%= f.select(:language, options_for_select([['English',2],['Chinese',1]])) %>
+        <br />
+        <%= f.label(:category_label, "category") %>
+        <%= f.text_field(:category, :size  => "100") %>
+        <br />
+        <%= f.label(:cover_label, "image") %>
+        <%= f.file_field :cover %>
+        <br />
+        <%= f.label(:file_label, "file") %>
+        <%= f.file_field :file %>
+        <br />
+        <%= f.label(:name_label, "description") %>
+        <%= f.text_area(:description, :cols => "100", :rows => "10") %>
+        <%= f.submit("Create") %>
+    <% end %>
+
+  </div>
+  <div class="clear"></div>
+  <%= render partial: "shared/footer" %>
+</div>

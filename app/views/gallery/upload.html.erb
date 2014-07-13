@@ -1,0 +1,19 @@
+<div id="gallery_area" class="gallery_area" style="background-color:  #FFFFFF;text-align: left;padding: 20px;" >
+  <div style="display:block;width: 100%" > <h1>New upload to Album: <%=@album.name %></h1></div>
+  <div>
+    <%= render 'upload_form' %>
+  </div>
+
+  <div style="display:block;width: 100%" >
+    <%= link_to 'Back', photos_path %>
+  </div>
+
+</div>
+<div id="new_uploaded_box" style="display: block;position: relative">
+
+</div>
+<div id="new_uploaded_img" style="display: block;position: relative">
+
+</div>
+<script data-turbolinks-track="true" src="/assets/photos.js?body=1"></script>
+

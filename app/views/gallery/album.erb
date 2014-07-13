@@ -1,0 +1,17 @@
+<div id='album_body' class="album_body" ng-controller="galleryCtrl">
+ <div class="album_title">{{lang.gallery_title}} </div>
+  <div id="album_area"  <% if mobile_device? %> style="overflow-x: auto" <% end %>  class="album_area">
+    <% @albums.each do |album| %><div class="album_item "><a href="/album/<%= album.id %>"> <div title="<%= album.name %>" description="<%= album.description %>" class="photo_item_cover" show-desc></div></a><div class="album_item_img"><img src="<%=album.cover.photo(:large) %>"/></div></div><% end %>
+    <div class="clear"></div>
+  </div>
+  <div <% if mobile_device? %> style="display: none" <% end %> id="scroll_bar" class="scroll_bar">
+    <div id="scroll_bar_icon" class="scroll_bar_icon"></div>
+  </div>
+  <div  <% if mobile_device? %> style="display: none" <% end %>  class="album_description">
+    <h2 id="album_title"></h2>
+    <div id="album_description">
+    </div>
+  </div>
+</div>
+<%= render partial: "shared/footer" %>
+

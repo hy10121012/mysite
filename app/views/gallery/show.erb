@@ -1,9 +1,49 @@
-<div ng-controller='GalleryCtrl'>
+<div class="gallery" ng-controller="albumCtrl">
+  <div id="gallery_area" class="gallery_area">
+    <%= render partial: 'photo_cell', locals: {photos: @photos} %>
 
-  <div ng-repeat="photo in photos">
-    {{photo.url}}
+
   </div>
-
+  <div class="clear"></div>
 
 </div>
+<script>
+    $(document).ready(function () {
+        wraper = $("#html_container")
+        offset = 0;
+        loading = 0;
+        wraper.scroll(function () {
+            if ($(this).scrollTop() + $(this).innerHeight() >= this.scrollHeight) {
+                if (offset >= 0 && loading == 0) {
+                    offset += 20
+                    loading = 1
+                    $.get(<%=params[:id] %>+'/' + offset).success(function (data) {
 
+                        if (data == 0) {
+                            offset = -1
+                            return false;
+                        }
+                        $data = $(data)
+                        contain = $('#gallery_area');
+                        contain.append($data).waitForImages(function () {
+                            contain.masonry('appended', $data, true)
+                            contain.find('.append_' + offset).each(function () {
+
+                                pic_list.push($(this).attr('open-pic'))
+                                console.log(pic_list)
+                                $(this).on('click', function (e) {
+                                    e.stopPropagation(this);
+                                    console.log(this)
+                                    open_img(this)
+                                })
+                            })
+                            loading = 0
+                        })
+                    })
+                }
+            }
+        });
+    })
+
+
+</script>

@@ -30,10 +30,9 @@
   width: 400px;
 }
 
-.entry_site{
-
+#html_container{
+  //overflow-y: hidden;
 }
-
 .entry_block{
   margin-left: auto;
   margin-right: auto;
@@ -63,20 +62,41 @@
   background-color: #2bb7fd;
 }
 
+#top_page{
+  height: 100%;
+  width: 100%;
+
+  z-index: 200;
+}
+
 .home_top_box{
   position: relative;
   width: 100%;
-  max-height:600px;
-  min-height: 400px;
-  height: 50%;
-  background-color: #1e1e1e;
-  box-shadow: 0px 0px 10px 10px rgba(0,0,0,0.6);;
+  height: 100%;
+  background-color:rgba(0,0,0,0.4);
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 40px;
+  line-height: 90%;
+  vertical-align: middle;
+  //box-shadow: 0px 0px 10px 10px rgba(0,0,0,0.6);;
 }
+.home_top_box:before,.menu_area:before{
+  content: '';
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+  margin-right: -0.25em; /* Adjusts for spacing */
 
+  /* For visualization
+  background: #808080; width: 5px;
+  */
+}
 .home_top_{
   width: 100%;
   height: 100%;
-  position: absolute;
+  position: fixed;
+  overflow-y: scroll;
 }
 
 .home_bottom{
@@ -89,28 +109,16 @@
   background: url("/images/home/home_1.jpg") center no-repeat;
 }
 
-#home_title_1{
-  position: absolute;
-  margin-top: 100px;
-  margin-left: 10%;
-  font-size: 40px;
-  width: 400px;
-  background: #000000;
+#home_title{
+
+  font-size: 60px;
+  padding-top:15%;
+  //background: #000000;
   color: #FFFFFF;
   display: inline-block;
-  width: auto;
+  text-align: center;
 }
-#home_title_2{
-  position: absolute;
-  margin-top: 200px;
-  margin-left: 10%;
-  font-size: 30px;
-  max-width: 800px;
-  width: auto;
-  background: #000000;
-  color: #FFFFFF;
-  display: inline-block;
-}
+
 
 .home_intro{
   position:relative;
@@ -129,9 +137,9 @@
   position: absolute;
   width: 100%;
   height: 100px;
-  background: rgba(0,0,0,0.8);
+  //background: rgba(0,0,0,0.8);
   bottom: 0px;
-  box-shadow: 0px 0px 55px rgba(0, 0, 0, 0.7);
+  //box-shadow: 0px 0px 55px rgba(0, 0, 0, 0.7);
 }
 
 .home_down_arrow{
@@ -149,68 +157,90 @@
   background-color:rgba(255,255,255,0.8);
 }
 
-#menu_area{
-  background: url("/images/home/menu_bg.jpg")  bottom  no-repeat;
-  background-size: 100% 100%;
-}
-
 .menu_area{
-  padding: 0px;
-  margin: 0px;
   position: absolute;
-  top:100%;
   width: 100%;
   height: 100%;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 40px;
+  line-height: 90%;
+  vertical-align: middle;
+  padding: 0px;
+  margin: 0px;
+  background-color:  rgba(0, 0, 0, 0.8);
+  top:100%;
 }
 
 .menu_list{
+  display: inline-block;
+  text-align: center;
   margin:0px;
-  width: 100%;
-  height: 100%;
-  display: none;
+  margin-right: auto;
+  margin-left: auto;
+  width: 90%;
   position: relative;
-  list-style-type: none;
   padding: 0px;
-  overflow: auto;
   white-space: nowrap;
 }
 
-.menu_list_item{
+.option_container{
   margin: 0px;
   padding:0px;
-  margin-top: 5%;
   display:inline-block;
-  width: 20%;
-  height:80%;
-  border-right: 1px solid #FFFFFF;
+  width:25%;
+}
+
+
+
+.menu_list_item{
+  border: 2px solid #FFFFFF;
+  width: 130px;
+  height:130px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.menu_list_item_description{
+  padding: 2px;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 26px;
+  display: block;
+  border: 0px;
+  width: 130px;
+  margin-top: 5px;
+  margin-right: auto;
+  margin-left: auto;
 }
 
 .menu_list_item_cover{
   position: relative;
   cursor: pointer;
-  height: 100%;
-  width: 100%;
+  height:130px;
+  width: 130px;
   z-index: 200;
+  border: 0px ;
   background-color:rgba(0,0,0,0.3);
 }
 
 
 .menu_list_item_cover:hover{
+  margin: 0;
+  padding: 0;
   background-color:rgba(255,255,255,0.1);
 }
 
 #my_work{
   background: url("/images/home/my_work.jpg") no-repeat;
-  background-size: auto 100%;
-  background-position: 40% 0px;
-
+  background-size: 100% auto ;
+  background-position: center;
 }
 
 #my_blog{
   background: url("/images/home/my_blog.jpg") no-repeat;
-  background-size: auto 100%;
-  background-position: -80px 0px;
-
+  background-size: 100% auto;
+  background-position: center;
 }
 
 #my_games{
@@ -221,12 +251,14 @@
 
 #my_interest{
   background: url("/images/home/my_interest.jpg")  no-repeat;
-  background-size: auto 100% ;
+  background-size: auto 100%;
+  background-position: center;
 }
 
 #my_book {
   background: url("/images/home/my_book.jpg") no-repeat;
-  background-size: auto 100%;
+  background-size: 100% auto;
+  background-position: center;
 }
 
 #gallery {
@@ -239,3 +271,14 @@
   height: 50px;
   width: 100%;
 }
+
+.option_item{
+  display:inline-block;
+  width:200px;
+  height:200px;
+  margin: 0px;
+  padding:0px;
+  margin-top: 5%;
+}
+
+

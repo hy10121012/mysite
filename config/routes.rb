@@ -1,4 +1,4 @@
-Myside::Application.routes.draw do
+Mysite::Application.routes.draw do
 
   root  "home#welcome"
   get '/home',:to=> 'home#home'
@@ -12,12 +12,19 @@ Myside::Application.routes.draw do
   post '/my_blog/add_comment',:to=> 'blogs#add_comment'
   get '/my_blog/get_comment/:id',:to=> 'blogs#get_comment'
   get '/my_blog/find_by_offset/:offset',:to=> 'blogs#find_by_offset'
-  get '/gallery',:to=> 'gallery#show'
+  get '/gallery',:to=> 'gallery#album'
+  get '/album/:id',:to=> 'gallery#show'
+  get '/album/:id/upload',:to=> 'gallery#create'
+  get '/album/:id/:offset',:to=> 'gallery#get_more_photo'
   get '/gallery/get_pic',:to=> 'gallery#get_pic'
+  get '/gallery/new',:to=> 'gallery#new'
+  post '/gallery/new',:to=> 'gallery#new_create'
+
 
   resources :blogs
   resources :tags
-  resources :books
+  resources :books,:controller=>'my_book'
+  resources :photos
 
 
 

@@ -13,25 +13,33 @@
 //= require jquery
 //= require jquery_ujs
 //= require thirdparty/waitForImage
+//= require thirdparty/jquery.touchwipe.min
 //= require thirdparty/angular.min
-//= require thirdparty/angular-cookies.min
-//= require thirdparty/angular-sanitize.min
+//= require thirdparty/masonry.pkgd.min.js
+//= require thirdparty/angular-masonry.min.js
+//= require thirdparty/angular-cookies.min.js
+//= require thirdparty/angular-sanitize.min.js
+//= require jquery-fileupload/basic
+//= require jquery-fileupload/vendor/tmpl
 
 $(document).ready(function(){
-    $(window).click(function() {
+    $(window).on('touchend click',function() {
         hide_side_bar()
+        $('#blink').fadeOut(function(){
+            $('#blink').remove();
+        });
     });
 
     $('#side_menu').click(function(){
         show_side_bar()
     })
-    $('#side_bar,#side_menu').click(function(event){
+    $('#side_bar,#side_menu,#img').on('touchend click',function(event){
         event.stopPropagation();
     });
 })
 
 
-var mysite = angular.module('mysite',['ngCookies','ngSanitize']);
+var mysite = angular.module('mysite',['ngCookies','ngSanitize','wu.masonry']);
 
 mysite.directive('bgImg',function(){
 return{
@@ -115,11 +123,15 @@ mysite.controller('TopbarCtrl',function($scope,$rootScope,languageServices,$cook
         $rootScope.lang=data;
     }
     $scope.languages = lang;
-    if(!angular.isDefined($cookies.language))$cookies.language='en';
+    if(!angular.isDefined($cookies.language))$cookies.language='cn';
     console.log($cookies.language);
     languageServices.setDefaultLanguage($cookies.language,setLang);
 
     $scope.changeLanguage = function(lang){
+        if(lang=='en'){
+            alert ('It is not ready yet! I am still working on it :)')
+            return false;
+        }
         $cookies.language= lang;
         languageServices.changeLanguage(lang,setLang)
     }
@@ -183,4 +195,86 @@ function correctSize(container){
     }
 }
 
+var pic_list= [];
+open_img = function(element) {
+    var blink, blink_d, container, html, img_url;
+    img_url = $(element).attr('open-pic');
+    blink = "<div style='z-index: 997' class='blink_c' id='blink_c'><div class='blink_c_centered'>Loading...</div></div>";
+    blink_d = "<div style='z-index: 997' class='blink_u' id='blink_c'><div class='blink_c_centered'>Loading...</div></div>";
+    container = "<div id='pic_center_container' class='pic_center_container'>";
+    container += "<img style='cursor: pointer' id='img' src='" + img_url + "' >";
+    container += "</div>";
+    console.log(container)
+    html = blink + "<div  class='blink' id='blink'>" + container + "</div>";
+    $('body').prepend(html);
+    $('#center_container_closer').on('click', function() {
+        return $('#blink').fadeOut(function() {
+            return $('#blink').remove();
+        });
+    });
+    return $('#pic_center_container').waitForImages(function() {
+        var current, img;
+        current = pic_list.indexOf(img_url);
+        img = $('#img');
+        $('#img').on('touchend click', function(e) {
+            return e.stopPropagation();
+        });
+        img.on('click', function(e) {
+            var i, offset;
+            offset = $(this).offset();
+            i;
+            if ((e.clientX - offset.left) > Math.round(img.width() * 0.5)) {
+                i = current + 1;
+                if (i >= pic_list.length) {
+                    i -= pic_list.length;
+                }
+            } else {
+                i = current - 1;
+                if (i < 0) {
+                    i = pic_list.length - 1;
+                }
+            }
+            img.css('width', '');
+            img.css('height', '');
+            img.attr('src', pic_list[i]);
+            $('body').prepend(blink_d);
+            img.waitForImages(function() {
+                return $('#blink_c').fadeOut(function() {
+                    return $('#blink_c').remove();
+                });
+            });
+            current = i;
+            return adjust();
+        });
+        return adjust();
+    });
+};
 
+adjust = function() {
+    var container;
+    container = $('#pic_center_container');
+    if ($('#img').height() > Math.floor(window.innerHeight * 0.8)) {
+        $('#img').css("height", Math.floor(window.innerHeight * 0.8) + 'px');
+        $('#img').css("width", '');
+    }
+    if ($('#img').width() > Math.floor(window.innerWidth * 0.8)) {
+        $('#img').css("width", Math.floor(window.innerWidth * 0.8) + 'px');
+        $('#img').css("height", '');
+    }
+    return $('#pic_center_container').waitForImages(function() {
+        var left_margin, top_margin;
+        top_margin = Math.floor(window.innerHeight - $('#img').height()) / 2;
+        left_margin = Math.floor(window.innerWidth - $('#img').width()) / 2;
+        if (left_margin < 0) {
+            left_margin = 0;
+        }
+        if (top_margin < 0) {
+            top_margin = 0;
+        }
+        container.css('margin-top', top_margin + 'px');
+        container.css('left', left_margin + 'px');
+        return $('.blink_c').fadeOut(function() {
+            return $('#blink_c').remove();
+        });
+    });
+};

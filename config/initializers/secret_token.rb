@@ -9,4 +9,4 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-Myside::Application.config.secret_key_base = '1c6c040bcce2c74baf2551e69cb0c72330e8433535800d98ba88e85964c3b0fcf6ca24a8b8168eeeafcf4ccb4d4485358246a1e1fb8435c5c37c7866e6adae4c'
+Mysite::Application.config.secret_key_base = '1c6c040bcce2c74baf2551e69cb0c72330e8433535800d98ba88e85964c3b0fcf6ca24a8b8168eeeafcf4ccb4d4485358246a1e1fb8435c5c37c7866e6adae4c'
