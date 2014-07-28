@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140710103354) do
+ActiveRecord::Schema.define(version: 20140727220441) do
 
   create_table "albums", force: true do |t|
     t.string   "name"
@@ -29,10 +29,14 @@ ActiveRecord::Schema.define(version: 20140710103354) do
 
   create_table "blogs", force: true do |t|
     t.string   "title"
-    t.string   "img",        limit: 128
+    t.string   "img",                limit: 128
     t.text     "content"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "cover_file_name"
+    t.string   "cover_content_type"
+    t.integer  "cover_file_size"
+    t.datetime "cover_updated_at"
   end
 
   create_table "books", force: true do |t|

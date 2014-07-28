@@ -48,7 +48,7 @@ class BlogsController < ApplicationController
     title = params[:blog][:title];
     imgs = params[:blog][:imgs];
     tags = params[:tags];
-    puts params.to_yaml
+
     if !imgs.nil?
       imgs.each_with_index do |img,index|
         img_aligs =Time.now.strftime(DATETIME_FORMAT).to_s+img[:key];
@@ -73,15 +73,19 @@ class BlogsController < ApplicationController
       end
     end
 
-
-    blog = Blog.new;
-    blog.content = content;
-    blog.title = title;
-    blog.tags =tag_array;
+    blog_raw = upload_params
+    blog_raw[:title]= title
+    blog_raw[:content]= content
+    blog_raw[:tags]= tag_array
+    blog = Blog.create(blog_raw);
     blog.created_at = Time.now.strftime(DATETIME_FORMAT);
     blog.updated_at = Time.now.strftime(DATETIME_FORMAT);
     blog.save;
     redirect_to("/my_blog")
+  end
+
+  def upload_params
+    params[:blog].permit(:cover)
   end
 
 end

@@ -8,10 +8,16 @@
         <%= blog.label :名称  %>
       </div>
       <div>
+        <%= blog.label(:cover_label, "名称") %>
         <%= blog.text_field :title %>
       </div>
       <div>
+        <%= blog.label(:cover_label, "内容") %>
         <%= blog.text_area :content %>
+      </div>
+      <div>
+        <%= blog.label(:cover_label, "标题图片") %>
+        <%= blog.file_field :cover %>
       </div>
       <div>
         <%= blog.text_field :tag1, :name=>'tags[]' %>

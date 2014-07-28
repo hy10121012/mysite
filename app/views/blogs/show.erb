@@ -1,7 +1,7 @@
 <%= javascript_include_tag "blog_show", "data-turbolinks-track" => true %>
 <div class="alticle_container" ng-controller="ArticleCtrl" ng-init="get_comment( <%=@article.id  %>)">
   <div ng-click="return()" class="back_button"><img src="/icon/right_arrow_w.gif" /></div></a>
-  <section id="body_header"  bg-img="/images/blogs/<%=@article.img %>" class="article_header">
+  <section id="body_header"  bg-img="<%=@article.cover(:large) %>" class="article_header">
   <div class="header_blinder">
     <div class="article_header_space"></div>
     <div class="blog_title_box">

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="DataSourceManagerImpl" format="xml" hash="2349094624">
+  <component name="DataSourceManagerImpl" format="xml" hash="673535459">
     <data-source source="LOCAL" name="Data Source" product="" version="" jdbc-version="" driver-name="" driver-version="" uuid="3da8a7a9-3782-4de5-85a9-8a54bc5c5c60">
       <synchronize>true</synchronize>
       <jdbc-driver>sun.jdbc.odbc.JdbcOdbcDriver</jdbc-driver>
@@ -9,6 +9,54 @@
       <user-password>df9bdf9adf9bdf98df9bdf9adf9bdf98</user-password>
       <default-dialect>MySQL</default-dialect>
       <libraries />
+    </data-source>
+    <data-source source="LOCAL" name="Rails myside: development" product="MySQL" version="5.5.24" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.31 ( Revision: alexander.soklakov@oracle.com-20140520065950-groqzzbvxprqdmnz )" uuid="643609ad-9455-4935-9b89-ebac0de4f3fd">
+      <extra-name-characters>#@</extra-name-characters>
+      <identifier-quote-string>`</identifier-quote-string>
+      <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://127.0.0.1:3306/my_site</jdbc-url>
+      <user-name>root</user-name>
+      <user-password>df9bdf9adf9bdf98df9bdf9adf9bdf98</user-password>
+      <libraries>
+        <library>
+          <url>file://$USER_HOME$/.RubyMine50/config/jdbc-drivers/mysql-connector-license.txt</url>
+        </library>
+        <library>
+          <url>file://$USER_HOME$/.RubyMine50/config/jdbc-drivers/mysql-connector-java-5.1.31-bin.jar</url>
+        </library>
+      </libraries>
+    </data-source>
+    <data-source source="LOCAL" name="Rails myside: production" product="MySQL" version="5.5.24" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.31 ( Revision: alexander.soklakov@oracle.com-20140520065950-groqzzbvxprqdmnz )" uuid="26507940-02ef-4776-8d59-223f69bc3d8a">
+      <extra-name-characters>#@</extra-name-characters>
+      <identifier-quote-string>`</identifier-quote-string>
+      <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://127.0.0.1:3306/my_site</jdbc-url>
+      <user-name>root</user-name>
+      <user-password>df9bdf9adf9bdf98df9bdf9adf9bdf98</user-password>
+      <libraries>
+        <library>
+          <url>file://$USER_HOME$/.RubyMine50/config/jdbc-drivers/mysql-connector-license.txt</url>
+        </library>
+        <library>
+          <url>file://$USER_HOME$/.RubyMine50/config/jdbc-drivers/mysql-connector-java-5.1.31-bin.jar</url>
+        </library>
+      </libraries>
+    </data-source>
+    <data-source source="LOCAL" name="Rails myside: test" product="MySQL" version="5.5.24" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.31 ( Revision: alexander.soklakov@oracle.com-20140520065950-groqzzbvxprqdmnz )" uuid="c1efca1e-48cf-48dc-84fd-90cc4f616ca9">
+      <extra-name-characters>#@</extra-name-characters>
+      <identifier-quote-string>`</identifier-quote-string>
+      <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://127.0.0.1:3306/my_site</jdbc-url>
+      <user-name>root</user-name>
+      <user-password>df9bdf9adf9bdf98df9bdf9adf9bdf98</user-password>
+      <libraries>
+        <library>
+          <url>file://$USER_HOME$/.RubyMine50/config/jdbc-drivers/mysql-connector-license.txt</url>
+        </library>
+        <library>
+          <url>file://$USER_HOME$/.RubyMine50/config/jdbc-drivers/mysql-connector-java-5.1.31-bin.jar</url>
+        </library>
+      </libraries>
     </data-source>
   </component>
 </project>
