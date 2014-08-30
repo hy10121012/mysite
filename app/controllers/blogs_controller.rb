@@ -22,6 +22,7 @@ class BlogsController < ApplicationController
 
   def show
     @article = Blog.find(params[:id]);
+    @site_title  = @article.title
   end
 
   def get_comment
@@ -33,7 +34,7 @@ class BlogsController < ApplicationController
   end
 
   def add_comment
-    if !params[:comment].length>0 & !params[:name].length>0
+    if params[:comment].length>0 && params[:name].length>0
       comment = Comment.new;
       comment.content=params[:comment]
       comment.name=params[:name]
@@ -86,6 +87,28 @@ class BlogsController < ApplicationController
 
   def upload_params
     params[:blog].permit(:cover)
+  end
+
+  def like
+    blog = Blog.find(params[:id])
+    if blog.like.nil?
+      blog.like =1
+    else
+      blog.like += 1
+    end
+    blog.save
+    render :text=>blog.like, :layout=>false
+  end
+
+  def dislike
+    blog = Blog.find(params[:id])
+    if blog.dislike.nil?
+      blog.dislike =1
+    else
+      blog.dislike += 1
+    end
+    blog.save
+    render :text=>blog.dislike, :layout=>false
   end
 
 end

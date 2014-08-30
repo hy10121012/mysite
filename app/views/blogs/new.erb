@@ -5,15 +5,12 @@
   <%= form_for :blog ,url: blogs_path do |blog| %>
 
       <div>
-        <%= blog.label :名称  %>
-      </div>
-      <div>
         <%= blog.label(:cover_label, "名称") %>
         <%= blog.text_field :title %>
       </div>
       <div>
         <%= blog.label(:cover_label, "内容") %>
-        <%= blog.text_area :content %>
+        <%= blog.text_area :content, :style=>"width:40%;height:400px;" %>
       </div>
       <div>
         <%= blog.label(:cover_label, "标题图片") %>

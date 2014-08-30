@@ -19,12 +19,14 @@ Mysite::Application.routes.draw do
   get '/gallery/get_pic',:to=> 'gallery#get_pic'
   get '/gallery/new',:to=> 'gallery#new'
   post '/gallery/new',:to=> 'gallery#new_create'
-
+  post '/blogs/:id/like',:to=> 'blogs#like'
+  post '/blogs/:id/dislike',:to=> 'blogs#dislike'
 
   resources :blogs
   resources :tags
   resources :books,:controller=>'my_book'
   resources :photos
+
 
 
 

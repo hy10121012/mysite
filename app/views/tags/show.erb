@@ -13,7 +13,7 @@
     <% @tag.blogs.each do |blog| %>
     <section class="article_block">
       <h2><a href="/blogs/<%=blog.id %>"><%=blog.title%></a></h2>
-      <article class="article_content" ><a href="/blogs/<%=blog.id %>"><%=raw blog.content%></a></article>
+      <article class="article_content" ><a href="/blogs/<%=blog.id %>"><%=simple_format(raw blog.content)%></a></article>
     </section>
     <% end %>
   </div>
